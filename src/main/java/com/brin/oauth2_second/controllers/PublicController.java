@@ -1,5 +1,6 @@
 package com.brin.oauth2_second.controllers;
 
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -8,8 +9,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 public class PublicController {
 
     @GetMapping("/public/messages")
-    public String publicMessages(Model model){
-        model.addAttribute("body", "nobody");
-        return "response";
+    public ResponseEntity<MessageDto> publicMessages(){
+        return ResponseEntity.ok(new MessageDto("public content"));
     }
 }
