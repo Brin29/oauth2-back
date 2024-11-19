@@ -10,7 +10,7 @@ import {map} from "rxjs/operators";
 })
 export class MyHttpClientService {
 
-  token: string = "";
+   token: string = "";
 
   constructor(private http: HttpClient) { }
 
@@ -25,8 +25,7 @@ export class MyHttpClientService {
   }
 
   getToken(code: string): Observable<boolean> {
-    return this.http.get<Token>("http://localhost:8080/auth/callback?code=" + code,
-    {observe: "response"}).pipe(map(response: HttpResponse<Token>) => {
+    return this.http.get<Token>("http://localhost:8080/auth/callback?code=" + code, {observe: "response"}).pipe(map((response: HttpResponse<Token>) => {
       if (response.status == 200 && response.body !== null){
         this.token = response.body.token;
         return true;
@@ -34,6 +33,6 @@ export class MyHttpClientService {
       else {
         return false;
       }
-    })
-  }
+    }));
+    }
 }

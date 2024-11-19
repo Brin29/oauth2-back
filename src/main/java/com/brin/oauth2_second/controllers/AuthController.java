@@ -29,10 +29,11 @@ public class AuthController {
     public ResponseEntity<UrlDto> auth(){
         String url = new GoogleAuthorizationCodeRequestUrl(
                 clientId,
-                "http://localhost:4200",
-                Arrays.asList("email", "profile", "opeind")
+                "http://localhost:5173",
+                Arrays.asList("email", "profile", "openid")
         ).build();
 
+        System.out.println(url);
         return ResponseEntity.ok(new UrlDto(url));
     }
 
@@ -48,7 +49,7 @@ public class AuthController {
                     clientId,
                     clientSecret,
                     code,
-                    "http://localhost:4200"
+                    "http://localhost:5173"
             ).execute().getAccessToken();
         } catch (IOException e) {
             return ResponseEntity.status(HttpStatus.UNAUTHORIZED).build();

@@ -18,7 +18,7 @@ public class SecurityConfig {
 
     private final WebClient userInfoClient;
 
-    private SecurityConfig(WebClient userInfoClient){
+    public SecurityConfig(WebClient userInfoClient){
         this.userInfoClient = userInfoClient;
     }
 

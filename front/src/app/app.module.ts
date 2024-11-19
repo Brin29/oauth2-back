@@ -19,6 +19,8 @@ import { PrivateContentComponent } from './private-content/private-content.compo
   ],
   imports: [
     BrowserModule,
+    HttpClientModule,
+    RouterModule.forRoot([]),
     AppRoutingModule
   ],
   providers: [],

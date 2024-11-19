@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 
-import { MyHttpService } from "../my-http-client.service";
+import { MyHttpClientService } from "../my-http-client.service";
 
 @Component({
   selector: 'app-login-form',
@@ -11,7 +11,7 @@ export class LoginFormComponent {
 
   url: string = "";
 
-  constructor(private http: MyHttpService) {}
+  constructor(private http: MyHttpClientService) {}
 
   ngOnInit(): void {
     this.http.get("/auth/url").subscribe((data: any) => {

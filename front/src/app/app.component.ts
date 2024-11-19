@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 
-import { MyHttpService } from "../my-http-client.service";
+import { MyHttpClientService } from "./my-http-client.service";
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-root',
@@ -8,23 +9,23 @@ import { MyHttpService } from "../my-http-client.service";
   styleUrl: './app.component.css'
 })
 export class AppComponent {
-  title = 'frontend';
   componentToShow: string = "public";
 
-  constructor(private http: MyHttpService, private route: ActivateRoute){}
+  constructor(private http: MyHttpClientService, private route: ActivatedRoute){}
 
-   ng0nInit(): void {
-     this.route.queryParams.subscribe(params => {
-       if (params["code"] !== undefined){
-            this.http.getToken(params["code"]).subscribe(result => {
-              if (result == true){
-                this.componentToShow = "private";
-              }
-              else{
-                this.componentToShow == "public"
-                }
-             });
-         }
-       })
+  ngOnInit(): void {
+    this.route.queryParams.subscribe(params => {
+      if (params["code"] !== undefined) {
+        this.http.getToken(params["code"]).subscribe(result => {
+          if (result == true){
+            this.componentToShow = "private";
+          }
+          else {
+            this.componentToShow = "public"
+          }
+        })
+      }
+    })
+    
   }
 }

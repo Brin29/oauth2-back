@@ -8,7 +8,7 @@ import org.springframework.web.reactive.function.client.WebClient;
 @Component
 public class WebClientConfig {
 
-    @Value("${spring.security.oauth2.resourceserver.opaque-token.introspect-uri}")
+    @Value("${spring.security.oauth2.resourceserver.opaque-token.introspection-uri}")
     private String introspectUri;
 
     @Bean
